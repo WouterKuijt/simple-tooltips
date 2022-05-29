@@ -9,6 +9,8 @@
     --stt-offset: 10px; /* How far outwards the tooltip goes */
     --stt-transition-time-short: 0.1s; /* Only affects the fade out animations */
     --stt-transition-time-long: 0.2s;
+
+    /* If you're wondering where font family is, the tooltip uses the same font as the parent div. */
 }
 
 
