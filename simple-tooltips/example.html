@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example</title>
+    <link rel="stylesheet" href="./simple-tooltips.css">
+</head>
+<style>
+    body{
+        margin: 0px;
+        height: 100vh;
+        background-color: hsl(0, 0%, 10%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    main{
+        display: flex;
+        justify-content: space-evenly;
+        width: 1200px;
+        height: fit-content;
+    }
+    .hover-me{
+        background-color: hsl(0, 0%, 20%);
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: hsl(0, 0%, 90%);
+        font-size: 1rem;
+        cursor: default;
+        border-radius: 50%;
+        transition: 0.2s;
+    }
+    .hover-me:hover{
+        background-color: hsl(0, 0%, 25%);
+    }
+</style>
+<body>
+    <main>
+        <div class="hover-me stt-fade-right" data-stt-title="Fade right">Hover me</div>
+        <div class="hover-me stt-fold-left" data-stt-title="Fade left">Hover me</div>
+        <div class="hover-me stt-zoom-up" data-stt-title="Fade up">Hover me</div>
+        <div class="hover-me stt-flip-down" data-stt-title="Fade down">Hover me</div>
+    </main>
+</body>
+</html>

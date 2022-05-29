@@ -1,0 +1,243 @@
+
+:root{
+    --stt-bg-color: hsl(0, 0%, 20%);
+    --stt-border-color: hsl(0, 0%, 25%);
+    --stt-border-size: 1px;
+    --stt-border-radius: 5px;
+    --stt-text-color: white;
+    --stt-text-size: 1rem; /* I don't recommend putting a large size in here since it kinda relies on being small */
+    --stt-offset: 10px; /* How far outwards the tooltip goes */
+    --stt-transition-time-short: 0.1s; /* Only affects the fade out animations */
+    --stt-transition-time-long: 0.2s;
+}
+
+
+/* Ignore everything under here */
+
+
+.stt-fade-right, .stt-fade-left, .stt-fade-up, .stt-fade-down, .stt-fold-right, .stt-fold-left, .stt-fold-up, .stt-fold-down, .stt-zoom-right, .stt-zoom-left, .stt-zoom-up, .stt-zoom-down, .stt-flip-right, .stt-flip-left, .stt-flip-up, .stt-flip-down{
+    position: relative;
+}
+
+.stt-fade-right::before, .stt-fade-left::before, .stt-fade-up::before, .stt-fade-down::before, .stt-fold-right::before, .stt-fold-left::before, .stt-fold-up::before, .stt-fold-down::before, .stt-zoom-right::before, .stt-zoom-left::before, .stt-zoom-up::before, .stt-zoom-down::before, .stt-flip-right::before, .stt-flip-left::before, .stt-flip-up::before, .stt-flip-down::before{
+    box-sizing: border-box;
+    font-family: inherit;
+    opacity: 0;
+    line-height: 1;
+    pointer-events: none;
+    position: absolute;
+    padding: 5px 10px;
+    border-radius: var(--stt-border-radius);
+    content: attr(data-stt-title);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: 30px;
+    background-color: var(--stt-bg-color);
+    border: var(--stt-border-size) solid var(--stt-border-color);
+    transition: var(--stt-transition-time-short);
+    font-size: var(--stt-text-size);
+    font-weight: 600;
+    color: var(--stt-text-color);
+}
+
+/* fade out */
+
+.stt-fade-right::before{
+    top: calc(50% - 15px);
+    left: 100%;
+}
+.stt-fade-right:hover::before{
+    transition: var(--stt-transition-time-long);
+    opacity: 1;
+    transform: translateX(var(--stt-offset));
+}
+
+.stt-fade-left::before{
+    top: calc(50% - 15px);
+    right: 100%;
+}
+.stt-fade-left:hover::before{
+    transition: var(--stt-transition-time-long);
+    opacity: 1;
+    transform: translateX(calc(var(--stt-offset) * -1));
+}
+
+.stt-fade-up::before{
+    top: -15px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.stt-fade-up:hover::before{
+    transition: var(--stt-transition-time-long);
+    opacity: 1;
+    transform: translateY(calc(var(--stt-offset) * -1)) translate(-50%, -50%);
+}
+
+.stt-fade-down::before{
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.stt-fade-down:hover::before{
+    transition: var(--stt-transition-time-long);
+    opacity: 1;
+    transform: translateY(var(--stt-offset)) translate(-50%, -50%);
+}
+
+/* fold out */
+
+.stt-fold-right::before{
+    transform-style: preserve-3d;
+    transform: rotateY(-90deg) perspective(200px);
+    transform-origin: center left;
+    transition: var(--stt-transition-time-long);
+    top: calc(50% - 15px);
+    left: 100%;
+}
+.stt-fold-right:hover::before{
+    opacity: 1;
+    transform: translateX(var(--stt-offset));
+}
+
+.stt-fold-left::before{
+    transform-style: preserve-3d;
+    transform: rotateY(90deg) perspective(200px);
+    transform-origin: center right;
+    transition: var(--stt-transition-time-long);
+    top: calc(50% - 15px);
+    right: 100%;
+}
+.stt-fold-left:hover::before{
+    opacity: 1;
+    transform: translateX(calc(var(--stt-offset) * -1));
+}
+
+.stt-fold-up::before{
+    transform-style: preserve-3d;
+    transform-origin: bottom center;
+    transition: var(--stt-transition-time-long);
+    top: -15px;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(-90deg) perspective(200px);
+}
+.stt-fold-up:hover::before{
+    opacity: 1;
+    transform: translateY(calc(var(--stt-offset) * -1)) translate(-50%, -50%);
+}
+
+.stt-fold-down::before{
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    transition: var(--stt-transition-time-long);
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(90deg) perspective(200px);
+}
+.stt-fold-down:hover::before{
+
+    opacity: 1;
+    transform: translateY(var(--stt-offset)) translate(-50%, -50%);
+}
+
+/* zoom out */
+
+.stt-zoom-right::before{
+    transform: scale(0.1);
+    transform-origin: center left;
+    transition: var(--stt-transition-time-long);
+    top: calc(50% - 15px);
+    left: 100%;
+}
+.stt-zoom-right:hover::before{
+    opacity: 1;
+    transform: translateX(var(--stt-offset));
+}
+
+.stt-zoom-left::before{
+    transform: scale(0.1);
+    transform-origin: center right;
+    transition: var(--stt-transition-time-long);
+    top: calc(50% - 15px);
+    right: 100%;
+}
+.stt-zoom-left:hover::before{
+    opacity: 1;
+    transform: translateX(calc(var(--stt-offset) * -1));
+}
+
+.stt-zoom-up::before{
+    transform-origin: bottom center;
+    transition: var(--stt-transition-time-long);
+    top: -15px;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+}
+.stt-zoom-up:hover::before{
+    opacity: 1;
+    transform: translateY(calc(var(--stt-offset) * -1)) translate(-50%, -50%);
+}
+
+.stt-zoom-down::before{
+    transform-origin: top center;
+    transition: var(--stt-transition-time-long);
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+}
+.stt-zoom-down:hover::before{
+    opacity: 1;
+    transform: translateY(var(--stt-offset)) translate(-50%, -50%);
+}
+
+/* flip out */
+
+.stt-flip-right::before{
+    transform: rotate(90deg);
+    transform-origin: bottom left;
+    transition: var(--stt-transition-time-long);
+    top: calc(50% - 15px);
+    left: 100%;
+}
+.stt-flip-right:hover::before{
+    opacity: 1;
+    transform: translateX(var(--stt-offset));
+}
+
+.stt-flip-left::before{
+    transform: rotate(-90deg);
+    transform-origin: bottom right;
+    transition: var(--stt-transition-time-long);
+    top: calc(50% - 15px);
+    right: 100%;
+}
+.stt-flip-left:hover::before{
+    opacity: 1;
+    transform: translateX(calc(var(--stt-offset) * -1));
+}
+
+.stt-flip-up::before{
+    transform-origin: bottom right;
+    transition: var(--stt-transition-time-long);
+    top: -15px;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+}
+.stt-flip-up:hover::before{
+    opacity: 1;
+    transform: translateY(calc(var(--stt-offset) * -1)) translate(-50%, -50%);
+}
+
+.stt-flip-down::before{
+    transform-origin: top left;
+    transition: var(--stt-transition-time-long);
+    top: calc(100% + 15px);
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+.stt-flip-down:hover::before{
+    transition: var(--stt-transition-time-long);
+    opacity: 1;
+    transform: translateY(var(--stt-offset)) translate(-50%, -50%);
+}
