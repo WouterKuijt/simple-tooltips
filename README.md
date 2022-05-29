@@ -3,6 +3,7 @@
 Small library for adding tooltips to your website
 -------------------------------------------------
 
+Download the simple-tooltips folder and add the .css file to your directory of your site.
 To add the tooltips simply add the class name with the desired animation together with the data attribute 'data-stt-title="your text here"'.
 
 Ex.
