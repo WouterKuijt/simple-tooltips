@@ -8,7 +8,7 @@ To add the tooltips simply add the class name with the desired animation togethe
 
 Ex.
 
-*<div class"stt-fade-right" data-stt-title="it fades right!"></div>*
+*<div class="stt-fade-right" data-stt-title="it fades right!"></div>*
 
 
 To change the styling of the tooltip. Navigate to the 'simple-tooltips.css' file, Then in the :root element are variables the tooltips use. 
